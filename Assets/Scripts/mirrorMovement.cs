@@ -35,6 +35,22 @@ public class mirrorMovement : MonoBehaviour
 
     void Update ()
     {
-        transform.localRotation = original.transform.localRotation;
+        float angle;
+        Vector3 axis;
+        
+        Quaternion toRotateSwing = Swing(original.transform.localRotation);
+        toRotateSwing.ToAngleAxis(out angle, out axis);
+        angle = Mathf.Clamp(angle, minAngle, maxAngle);
+        Quaternion swing = Quaternion.AngleAxis(angle, axis);
+        transform.localRotation = Twist(original.transform.localRotation) * swing;
+    }
+
+    private Quaternion Twist(Quaternion _rot)
+    {
+        return new Quaternion(0, _rot.y, 0, _rot.w).normalized;
+    }
+    private Quaternion Swing(Quaternion _rot)
+    {
+        return Quaternion.Inverse(Twist(_rot)) * _rot;
     }
 }
