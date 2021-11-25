@@ -42,7 +42,15 @@ public class mirrorMovement : MonoBehaviour
         toRotateSwing.ToAngleAxis(out angle, out axis);
         angle = Mathf.Clamp(angle, minAngle, maxAngle);
         Quaternion swing = Quaternion.AngleAxis(angle, axis);
-        transform.localRotation = Twist(original.transform.localRotation) * swing;
+        if(CancelTwist)
+        {
+            transform.localRotation = swing;
+        }
+        else
+        {
+            transform.localRotation = Twist(original.transform.localRotation) * swing;
+        }
+        
     }
 
     private Quaternion Twist(Quaternion _rot)
