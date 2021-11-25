@@ -651,7 +651,7 @@ PrefabInstance:
       objectReference: {fileID: 1563254779}
     - target: {fileID: 114139107630618700, guid: 4679d90a25e01b646b05cfaf5e86076f, type: 3}
       propertyPath: maxAngle
-      value: 180
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 114139107630618700, guid: 4679d90a25e01b646b05cfaf5e86076f, type: 3}
       propertyPath: original

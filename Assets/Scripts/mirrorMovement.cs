@@ -48,7 +48,7 @@ public class mirrorMovement : MonoBehaviour
         }
         else
         {
-            transform.localRotation = Twist(original.transform.localRotation) * swing;
+            transform.localRotation = swing * Twist(original.transform.localRotation);
         }
         
     }
@@ -59,6 +59,6 @@ public class mirrorMovement : MonoBehaviour
     }
     private Quaternion Swing(Quaternion _rot)
     {
-        return Quaternion.Inverse(Twist(_rot)) * _rot;
+        return  _rot* Quaternion.Inverse(Twist(_rot));
     }
 }
